@@ -51,13 +51,15 @@ public class Maze {
 					if(isIn(start_r-run_array[j],start_c,maze)) {
 						start_r=start_r-run_array[j];
 						if(maze[start_r][start_c]==-1) {
-							start_r=0;
-							start_c=0;
+							start_r=-1;
+							start_c=-1;
+							j=move_n;
 						}
 					}
 					else {
-						start_r=0;
-						start_c=0;
+						start_r=-1;
+						start_c=-1;
+						j=move_n;
 					}
 					break;
 				}
@@ -65,13 +67,15 @@ public class Maze {
 					if(isIn(start_c+run_array[j],start_c,maze)) {
 						start_c=start_c+run_array[j];
 						if(maze[start_r][start_c]==-1) {
-							start_r=0;
-							start_c=0;
+							start_r=-1;
+							start_c=-1;
+							j=move_n;
 						}
 					}
 					else {
-						start_r=0;
-						start_c=0;
+						start_r=-1;
+						start_c=-1;
+						j=move_n;
 					}
 					break;
 				}
@@ -79,13 +83,15 @@ public class Maze {
 					if(isIn(start_r+run_array[j],start_c,maze)) {
 						start_r=start_r+run_array[j];
 						if(maze[start_r][start_c]==-1) {
-							start_r=0;
-							start_c=0;
+							start_r=-1;
+							start_c=-1;
+							j=move_n;
 						}
 					}
 					else {
-						start_r=0;
-						start_c=0;
+						start_r=-1;
+						start_c=-1;
+						j=move_n;
 					}
 					break;
 				}
@@ -93,19 +99,19 @@ public class Maze {
 					if(isIn(start_c-run_array[j],start_c,maze)) {
 						start_c=start_c-run_array[j];
 						if(maze[start_r][start_c]==-1) {
-							start_r=0;
-							start_c=0;
+							start_r=-1;
+							start_c=-1;
+							j=move_n;
 						}
 					}
 					else {
-						start_r=0;
-						start_c=0;
+						start_r=-1;
+						start_c=-1;
+						j=move_n;
 					}
 					break;
 				}
 				}
-					
-				
 			}
 			
 			for (int k = 0; k < maze.length; k++) {
