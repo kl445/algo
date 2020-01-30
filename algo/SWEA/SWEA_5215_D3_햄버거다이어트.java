@@ -1,52 +1,52 @@
-package algo_basic.day1;
+package algo_day4;
 
 import java.util.Scanner;
 
 public class SWEA_5215_D3_햄버거다이어트 {
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 		
 		Scanner sc= new Scanner(System.in);
 		
+		
 		int tc=sc.nextInt();
 		
-		for (int i = 1; i <= tc; i++) {
+		for(int i=1; i<=tc;i++) {
+			
 			int n=sc.nextInt();
 			int l=sc.nextInt();
-			int score[]=new int[n];
-			int cal[]=new int[n];
-			int max=0;
-			int range=1;
-			
-			
-			for(int j=0; j<n; j++) {
-				score[j]=sc.nextInt();
-				cal[j]=sc.nextInt();
-				System.out.println("재료, 칼ㄹ로리"+score[j]+"//"+cal[j]);
-				range*=(j+1);
+			int[] score_array=new int[n];
+			int[] cal_array=new int[n];
+			for(int j=0; j<n;j++) {
+				score_array[j]=sc.nextInt();
+				cal_array[j]=sc.nextInt();
 			}
 			
-			int total[][] = new int[2][range];
+			int[] sum_score=new int[(1<<n)];
+			int[] sum_cal=new int[(1<<n)];
 			
-			
-			
-			
-			
-			
-			
-			
-			for(int j=0; j<range;j++) {
-				if(total[1][j]<=1000){
-					if(max<total[0][j]) {
-						max=total[0][j];
+			for(int j=0; j<sum_score.length;j++) {
+				for(int k=0;k<n;k++) {
+					if((j&(1<<k))>0) {
+						sum_score[j]+=score_array[k];
+						sum_cal[j]+=cal_array[k];
 					}
+					
 				}
 			}
 			
+			int max= 0;
+			for(int j=0;j<sum_score.length;j++) {
+				if(sum_cal[j]<=l) {
+					max=Math.max(max, sum_score[j]);
+				}
+			}
 			System.out.printf("#%d %d\n",i,max);
 			
 			
 		}
+
 	}
 
 }
