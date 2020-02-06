@@ -7,15 +7,22 @@ import java.util.Stack;
 public class JO_1809_탑 {
 
 	// 재귀
-public static void building(int[] array, int[] answer, int end, int start, int index) {
-
- 
+public static void building(int[] array, int[] answer, int end, int max, int index) {
 
 		if (end == array.length) {
 
 			return;
 
-		} else {
+		} 
+		
+		if(max<=array[end]){
+			max=array[end];
+			answer[end]=0;
+			index=end;
+			
+		}
+		else {
+		
 
 			for (int j = end; j >= index; j--) {
 
@@ -23,7 +30,7 @@ public static void building(int[] array, int[] answer, int end, int start, int i
 
 					answer[end] = j + 1;
 
-					start = array[j];
+					max = array[j];
 
 					index = j;
 
@@ -31,19 +38,16 @@ public static void building(int[] array, int[] answer, int end, int start, int i
 
 				} else {
 
-					
-
 				}
 
 			}
 
-			System.out.print(answer[end] + " ");
-
-			building(array, answer, end + 1, start, index);
+			
 
 		}
+		System.out.print(answer[end] + " ");
 
- 
+		building(array, answer, end + 1, max, index);
 
 	}
 
