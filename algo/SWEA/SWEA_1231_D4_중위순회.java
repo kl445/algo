@@ -116,7 +116,7 @@ public static void inorder(Node tree) {
 		
 		for (int i =1; i <=10; i++) {
 			
-			
+			tree=null;
 			int n=sc.nextInt();
 			sc.nextLine();
 			
