@@ -1,8 +1,8 @@
-package algo_ad.day1;
 
+package algo_ad.day1;
 import java.util.Scanner;
 
-public class SWEA_1244_D3_최대상금 {
+public class SWEA_1244_D3_최대상금{
 
 	static int max = Integer.MIN_VALUE;
 
@@ -44,6 +44,16 @@ public class SWEA_1244_D3_최대상금 {
 		}
 
 	}
+	public static void isBig(char[] array,int n) {
+		
+		if(n%2==0) {
+			max=getSum(array);
+		}else {
+			swap(array,array.length-1,array.length-2);
+			max=getSum(array);
+		}
+
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -55,12 +65,24 @@ public class SWEA_1244_D3_최대상금 {
 		for (int i = 1; i <= tc; i++) {
 			String str = sc.next();
 
-			max = Integer.MIN_VALUE;
+			max = -1;
 
 			char[] array = str.toCharArray();
 			int n = sc.nextInt();
 			perm(n, 0, array,0);
+			
+			if(max!=-1) {
 			System.out.printf("#%d %d\n",i,max);
+			}else {
+				
+				
+				isBig(array,n);
+				
+
+				
+				
+				System.out.printf("#%d %d\n",i,max);
+			}
 		}
 
 	}

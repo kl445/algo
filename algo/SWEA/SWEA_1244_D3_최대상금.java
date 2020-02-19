@@ -1,33 +1,16 @@
-package swea_0218;
 
+package algo_ad.day1;
 import java.util.Scanner;
 
-public class SWEA_1244_D3_최대상금 {
+public class SWEA_1244_D3_최대상금{
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	static int max = Integer.MIN_VALUE;
 
-		Scanner sc = new Scanner(System.in);
-
-		int tc = sc.nextInt();
-		for (int i = 1; i <= tc; i++) {
-
-			char[] c_array = sc.next().toCharArray();
-			int n = sc.nextInt();
-
-			max = -1;
-			perm(0, 0, c_array, new char[c_array.length], n,0);
-
-			System.out.printf("#%d %d\n", i, max);
-		}
-	}
-
-	public static int getInt(char[] temp) {
-
+	public static int getSum(char[] array) {
 		StringBuilder str = new StringBuilder();
 
-		for (int i = 0; i < temp.length; i++) {
-			str.append(temp[i]);
+		for (int i = 0; i < array.length; i++) {
+			str.append(array[i]);
 		}
 
 		int num = Integer.parseInt(str.toString());
@@ -35,57 +18,73 @@ public class SWEA_1244_D3_최대상금 {
 		return num;
 	}
 
-	static int max = Integer.MIN_VALUE;
+	public static void swap(char[] array, int idx1, int idx2) {
+		char temp = array[idx1];
+		array[idx1] = array[idx2];
+		array[idx2] = temp;
+	}
 
-	public static void perm(int start, int c, char[] c_array, char[] temp, int n, int cnt) {
+	public static void perm(int n, int c, char[] array,int start) {
 
 		if (n == c) {
+			
+			
+			max = Math.max(max, getSum(array));
 
-			//if (isOk(c_array, temp, n)) {
-				int ans = getInt(c_array);
-				if (max < ans) {
-					max = ans;
-			//	}
-
-			}
-			return;
 		} else {
-
-			for (int i = start; i < c_array.length; i++) {
-				for (int j = i + 1; j < c_array.length; j++) {
-					if (c_array[i] <= c_array[j]) {
-						char tem = c_array[i];
-						c_array[i] = c_array[j];
-						c_array[j] = tem;
-						
-						perm(i, c+1, c_array, temp, n, cnt);
-						
-						tem = c_array[j];
-						c_array[j] = c_array[i];
-						c_array[i] = tem;
+			for (int i = start; i < array.length; i++) {
+				for (int j = i + 1; j < array.length; j++) {
+					if (array[j] >= array[i]) {
+						swap(array, i, j);
+						perm(n, c + 1, array,i);
+						swap(array, i, j);
 					}
-
 				}
-
 			}
 		}
 
 	}
+	public static void isBig(char[] array,int n) {
+		
+		if(n%2==0) {
+			max=getSum(array);
+		}else {
+			swap(array,array.length-1,array.length-2);
+			max=getSum(array);
+		}
 
-	public static boolean isOk(char[] c_array, char[] temp, int n) {
+	}
 
-		int diff = 0;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 
-		for (int i = 0; i < temp.length; i++) {
-			if (c_array[i] != temp[i]) {
-				diff++;
+		Scanner sc = new Scanner(System.in);
+
+		int tc = sc.nextInt();
+
+		for (int i = 1; i <= tc; i++) {
+			String str = sc.next();
+
+			max = -1;
+
+			char[] array = str.toCharArray();
+			int n = sc.nextInt();
+			perm(n, 0, array,0);
+			
+			if(max!=-1) {
+			System.out.printf("#%d %d\n",i,max);
+			}else {
+				
+				
+				isBig(array,n);
+				
+
+				
+				
+				System.out.printf("#%d %d\n",i,max);
 			}
 		}
 
-		if (diff / 2 <= n) {
-			return true;
-		}
-		return false;
 	}
 
 }
