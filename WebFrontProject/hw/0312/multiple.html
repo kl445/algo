@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1> 구구단</h1>
+	<table border="5px" width="300" height="400">
+	<thead>
+	<tr>
+	 <script>
+	 for(i=2;i<10;i++){
+		 document.write("<th>"+i+"단 </th> ");
+	 }
+	 </script>
+	 </tr>
+	 </thead>
+	 <tbody>
+	 <tr>
+	
+            <script>
+                for(i=2;i<10;i++){
+     				document.write(" <td><table borer="+"2px"+">");
+                    //document.write("<tr><th>"+i+"단 </th></tr> ");
+                    for(j=1;j<10;j++){
+                        document.write("<tr><th>"+i+"*"+j+"="+(i*j)+"</th></tr>");
+                    }
+                    document.write(" </table ></td>");
+                    
+                }
+            </script>
+       
+        </tr>
+        </tbody>
+        
+        
+</table>
+</body>
+</html>
