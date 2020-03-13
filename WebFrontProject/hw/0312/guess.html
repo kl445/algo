@@ -9,14 +9,14 @@
 <table>
 <script type="text/javascript">
 		
-	var rand = Math.floor(Math.random() * 10);
-		document.write("맞았습니다!");
-		
+	var rand = Math.floor(Math.random() * 10+1);
+	
+		var t=0;
 		 while (true) {
 			var num1 = prompt("추측하는 숫자를 입력하시오");
-
+			t=t+1;
 			if (rand == num1) {
-				alter("맞았습니다.!");
+				alert("맞았습니다.!"+t+"회 걸리셨군요");
 				break;
 			} else {
 				if (rand < num1) {
@@ -25,7 +25,9 @@
 					alert("더 큰 숫자에요");
 				}
 			}
-		} 
+		}
+		 document.write("정답!")
+		
 		
 	</script>
 </table>
