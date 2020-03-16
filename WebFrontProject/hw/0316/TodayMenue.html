@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<style>
+		container{
+			text-align: center;
+		}
+		header{
+			padding: 20px;
+			margin: 20px;
+		}
+
+		#thumnail{
+			float:left;
+			margin:5px;
+			position: relative;
+  			  left: 30%;
+		}
+		#thumnail:hover {
+		    opacity: 1.0;
+		    filter: alpha(opacity=100);
+			}
+
+		
+	</style>
+</head>
+<body onload="start()" >
+
+
+		<script style="font-size:15px">
+			
+			var menue=["오늘의 메뉴: cake", "오늘의 메뉴: burger", "오늘의 메뉴: sandwich", "오늘의 메뉴: steak"];
+			var link=["images/cake.jpg","images/burger.jpg","images/sandwich.jpg","images/steak.jpg"];
+			var number=0;
+			
+			function randMenue(){
+	
+				number= Math.floor(Math.random() * 4);
+				setStyle(number)
+			}
+			function cake(){setStyle(0)}
+			function burger(){setStyle(1)}
+			function sandwich(){setStyle(2)}
+			function steak(){setStyle(3)}
+			
+			function setStyle(number){
+				var tempimg = document.getElementById("img");
+					tempimg.src=link[number];
+					
+			
+				var elem = document.getElementById("mainText");
+				    elem.innerHTML=menue[number];
+				    
+				    var target="thumnail"+number;
+					var x = document.getElementById(target);
+						x.style.border="3px black solid";
+					    x.style.opacity="1.0";
+					    
+				    
+				    for (var i = 0; i < 4; i++) {
+						if(i==number) continue;
+						var target="thumnail"+i;
+						var x = document.getElementById(target);
+						    x.style.opacity="0.5";
+						    x.style.border="0px white solid";
+					}
+			}
+			function start(){
+				var target="thumnail"+0;
+				var x = document.getElementById(target);
+					x.style.border="3px black solid";
+				    x.style.opacity="1.0";
+				    
+			    
+			    for (var i = 1; i < 4; i++) {
+					var target="thumnail"+i;
+					var x = document.getElementById(target);
+					    x.style.opacity="0.5";
+					    x.style.border="0px white solid";
+				}
+				
+			}
+			
+				
+			    
+			
+
+			</script>
+	<container>
+		<header>
+		
+		<button style="margin:10px" onclick ="randMenue();">랜덤 선택</button>
+		<br><br>
+		 <h2 id="mainText"> 오늘의 메뉴: cake</h2>
+		</header>
+		
+		<div style="margin:20px">
+			<img id="img" src="images/cake.jpg" width="300" height="300">
+		</div>
+	
+		
+		<div id= "thumnail">
+			<img id="thumnail0" src="images/cake.jpg" width="150" height="150" onclick="cake();">
+		</div>
+		
+		<div id= "thumnail">
+			<img id="thumnail1" src="images/burger.jpg" width="150" height="150" onclick="burger();">
+		</div>
+		
+		<div id= "thumnail" >
+			<img id="thumnail2" src="images/sandwich.jpg" width="150" height="150" onclick="sandwich();">
+		</div>
+		
+		<div id= "thumnail" >
+			<img id="thumnail3"src="images/steak.jpg" width="150" height="150" onclick="steak();">
+		</div>
+		
+	</container>
+
+	
+</body>
+</html>
