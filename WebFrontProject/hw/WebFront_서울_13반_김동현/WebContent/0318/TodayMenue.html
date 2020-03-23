@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script
+	  src="https://code.jquery.com/jquery-3.4.1.js"
+	  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	  crossorigin="anonymous">
+	</script>
+	<style>
+		container{
+			text-align: center;
+		}
+		header{
+			padding: 20px;
+			margin: 20px;
+		}
+
+		#thumnail{
+			float:left;
+			margin:5px;
+			position: relative;
+  			  left: 30%;
+		}
+		#thumnail:hover {
+		    opacity: 1.0;
+		    filter: alpha(opacity=100);
+			}
+
+		
+	</style>
+</head>
+<body>
+
+		<script style="font-size:15px">
+			
+			var menue=["오늘의 메뉴: cake", "오늘의 메뉴: burger", "오늘의 메뉴: sandwich", "오늘의 메뉴: steak"];
+			var link=["images/cake.jpg","images/burger.jpg","images/sandwich.jpg","images/steak.jpg"];
+			var hoover=[0,0,0,0];
+			var number=0;
+
+			function setStyle(number){
+				var tempimg = document.getElementById("img");
+					tempimg.src=link[number];
+					
+				var elem = document.getElementById("mainText");
+				    elem.innerHTML=menue[number];
+				    
+				    var target="thumnail"+number;
+				    hover[number]=1;
+					var x = document.getElementById(target);
+						x.style.border="3px black solid";
+					    x.style.opacity="1.0";
+					    
+					    
+				    
+				    for (var i = 0; i < 4; i++) {
+						if(i==number) continue;
+						hover[i]=0;
+						var target="thumnail"+i;
+						var x = document.getElementById(target);
+						    x.style.opacity="0.5";
+						    x.style.border="0px white solid";
+					}
+			}
+			
+			function start(){
+				var target="thumnail"+0;
+				hover[0]=1;
+				var x = document.getElementById(target);
+					x.style.border="3px black solid";
+				    x.style.opacity="1.0";
+				    
+			    
+			    for (var i = 1; i < 4; i++) {
+					var target="thumnail"+i;
+					hover[i]=0;
+					var x = document.getElementById(target);
+					    x.style.opacity="0.5";
+					    x.style.border="0px white solid";
+				}
+				
+			}
+			
+			function hover(num){
+				var target="thumnail"+num;
+				var x=document.getElementById(target);
+				x.style.opacity="1.0";
+			}
+			function out(num){
+				var target="thumnail"+num;
+				if(hover[num]==0){
+					var x=document.getElementById(target);
+					x.style.opacity="0.5";
+				}
+			}
+			
+				
+			    
+			
+
+			</script>
+	<container>
+		<header>
+		
+		<button style="margin:10px" id="random_btn">랜덤 선택</button>
+		<br><br>
+		 <h2 id="mainText"> 오늘의 메뉴: cake</h2>
+		</header>
+		
+		<div style="margin:20px">
+			<img id="img" src="images/cake.jpg" width="300" height="300">
+		</div>
+	
+		<div id= "thumnail">
+			<img id="thumnail0" src="images/cake.jpg" width="150" height="150" 
+			onmouseover="hover(0)" onmouseout="out(0)">
+		</div>
+		
+		<div id= "thumnail">
+			<img id="thumnail1" src="images/burger.jpg" width="150" height="150" 
+			onmouseover="hover(1)" onmouseout="out(1)">
+		</div>
+		
+		<div id= "thumnail" >
+			<img id="thumnail2" src="images/sandwich.jpg" width="150" height="150" 
+		onmouseover="hover(2)" onmouseout="out(2)">
+		</div>
+		
+		<div id= "thumnail" >
+			<img id="thumnail3"src="images/steak.jpg" width="150" height="150" 
+			onmouseover="hover(3)" onmouseout="out(3)">
+		</div>
+		
+	</container>
+	<script>
+		start();
+		$("#random_btn").click(function(){
+			var number= Math.floor(Math.random() * 4);
+			setStyle(number)
+			});
+		$("#thumnail0").click(function(){
+			setStyle(0);
+			});
+		$("#thumnail1").click(function(){
+			setStyle(1);
+			});
+	
+		$("#thumnail2").click(function(){
+			setStyle(2);
+			});
+		$("#thumnail3").click(function(){
+			setStyle(3);
+			});
+	
+	</script>
+
+	
+</body>
+</html>
