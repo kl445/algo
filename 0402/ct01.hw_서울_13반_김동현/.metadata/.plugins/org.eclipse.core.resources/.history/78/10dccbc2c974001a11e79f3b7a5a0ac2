@@ -1,0 +1,74 @@
+package algo.hw0402;
+
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class SWEA5607_D3_조합 {
+
+	static long[] memo = new long[1000001];
+	static int p = 1234567891;
+
+	public static long factoryal(int n) {
+//		if(memo[n]!=0) {
+//			
+//			return memo[n];
+//		}
+//		
+//		if(n==1) {
+//			return 1;
+//		}
+//		if(n==0) {
+//			return 1;
+//		}
+//		else {
+//			memo[n]=factoryal(n-1)*n;
+//		}
+//		return memo[n];
+
+		if (memo[n - 1]!=0) {
+			
+			memo[n]=memo[n - 1] * n;
+			return memo[n];
+		} else {
+			for (int i = 1; i <= n; i++) {
+				memo[i] = memo[i - 1] * i;
+			}
+		}
+		
+		return memo[n];
+
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+
+		int tc = sc.nextInt();
+		memo[0]=1;
+		for (int t = 0; t < tc; t++) {
+
+			StringBuilder sb = new StringBuilder();
+			sb.append("#").append(t + 1).append(" ");
+
+			int N = sc.nextInt();
+			int R = sc.nextInt();
+
+			
+			for (int i = 1; i <= N; i++) {
+				memo[i]=memo[i-1]*i;
+			}
+			
+//			System.out.println(factoryal(N));
+//			System.out.println(factoryal(R));
+
+			long ans = 0;
+
+			double res=((factoryal(N)/factoryal(N-R)/factoryal(R)));
+			ans=(int)res%p;
+
+			sb.append(ans);
+			System.out.println(sb.toString());
+		}
+	}
+
+}

@@ -1,0 +1,54 @@
+package algo.hw0402;
+
+import java.util.Scanner;
+
+public class SWEA5607_D3_조합 {
+
+	
+	static int[] memo=new int[1000001];
+	static int p=1234567891;
+	
+	public static int factoryal(int n) {
+		if(memo[n]!=0) {
+			
+			return memo[n];
+		}
+		
+		if(n==1) {
+			return 1;
+		}
+		else {
+			memo[n]=factoryal(n-1)*n;
+		}
+		return memo[n];
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc= new Scanner(System.in);
+		
+		int tc= sc.nextInt();
+		
+		for (int t = 0; t < tc; t++) {
+			
+			StringBuilder sb= new StringBuilder();
+			sb.append("#").append(t).append(" ");
+			
+			int N=sc.nextInt();
+			int R=sc.nextInt();
+			
+			
+			System.out.println(factoryal(N));
+			System.out.println(factoryal(R));
+			
+			long ans=0;
+			
+			double res=((factoryal(N)/factoryal(N-R)/factoryal(R)));
+			
+			ans=(int)res%p;
+			
+			sb.append(ans);
+			System.out.println(sb.toString());
+		}
+	}
+
+}

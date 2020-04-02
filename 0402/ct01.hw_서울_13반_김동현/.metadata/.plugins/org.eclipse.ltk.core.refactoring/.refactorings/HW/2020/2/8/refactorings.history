@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;algo.hw0201.SWEA_1244_D4_최대상금.java&apos; to &apos;SWEA_1244_D3_최대상금.java&apos;&#x0D;&#x0A;- Original project: &apos;HW&apos;&#x0D;&#x0A;- Original element: &apos;algo.hw0201.SWEA_1244_D4_최대상금.java&apos;&#x0D;&#x0A;- Renamed element: &apos;algo.hw0201.SWEA_1244_D3_최대상금.java&apos;" description="Rename compilation unit &apos;SWEA_1244_D4_최대상금.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;algo.hw0201{SWEA_1244_D4_최대상금.java" name="SWEA_1244_D3_최대상금.java" references="false" stamp="1582114121002" version="1.0"/>
+</session>
