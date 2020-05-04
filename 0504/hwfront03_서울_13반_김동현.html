@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		var str="";
+		var op1="";
+		var op2="";
+		var type=0;
+		var num=1;
+		
+		$('#pad button').on('click',function(){
+			var input=$(this).text();
+			//alert(input);
+			
+			
+		//	$("#formula").val(input.text());	
+			switch (input) {
+			
+			case "CE":
+					alert("초기화");
+					str="";
+					op1="";
+					op2="";
+					type=0;
+					$("#formula").val('');
+				break;
+				
+			case "0":
+			case "1":
+			case "2":
+			case "3":
+			case "4":
+			case "5":
+			case "6":
+			case "7": 
+			case "8":
+			case "9":
+					if(type!=0){
+						op2=op2.concat("",input);
+					}
+					str=str.concat("",input)
+					//alert(str);
+					$("#formula").val(str);
+					
+					break;
+
+					
+			case "+":
+				op1=str;
+				type=1;
+				str=str.concat("",input)
+				$("#formula").val(str);
+				break;
+			case "-":
+				op1=str;
+				type=2;
+				str=str.concat("",input)
+				$("#formula").val(str);
+				break;
+			case "*":
+				op1=str;
+				type=3;
+				str=str.concat("",input)
+				$("#formula").val(str);
+				break;
+			case "/":
+				op1=str;
+				type=4;
+				str=str.concat("",input)
+				$("#formula").val(str);
+				break;
+			case "=":
+				var res;
+				switch (type) {
+				case 1:
+					op1*=1;
+					op2*=1;
+					res=op1+op2;
+					break;
+				case 2:
+					res=op1-op2;
+					break;
+				case 3:
+					res=op1*op2;
+					break;
+				case 4:
+					res=op1/op2;
+					break;
+
+				default:
+					break;
+				}
+				
+				$("#formula").val(res);
+				str=str.concat("",input)
+				str=str.concat("",res)
+				$('#result').append(num+".  "+str+'<br>'); 
+				num++;
+				
+				str=res+"";
+				op1=res;
+				op2="";
+				type=0;
+					break;
+				
+			default:
+				break;
+			}
+			
+		});
+		
+	});
+</script>	
+
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+	#calc { 
+		border: 1px solid  gray;
+		width: 350px;
+		text-align: center;	
+	}
+	#formula{
+		text-align: right;
+		width: 80%;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}  
+	#resultDiv{
+		text-align: left;
+		margin-left: 40px;
+	}
+	button{
+		width:70px;
+		height:70px;
+	}
+</style>
+</head>
+<body>
+	 <div id='calc'>
+	 	<input 	type='text' id='formula' value='' 
+	 			placeholder='0.0' readonly="readonly"/>
+	 	<div id='pad'>
+	 		<button>7</button>
+	 		<button>8</button>
+	 		<button>9</button>
+	 		<button>+</button>
+	 		<button>4</button>
+	 		<button>5</button>
+	 		<button>6</button>
+	 		<button>-</button>
+	 		<button>1</button>
+	 		<button>2</button>
+	 		<button>3</button>
+	 		<button>*</button>
+	 		<button>0</button>
+	 		<button>CE</button>
+	 		<button>=</button>
+	 		<button>/</button>
+	 	</div>	
+	 	<div id='resultDiv'>
+	 		<h2>결과 이력</h2>
+	 		<p id='result'></p>
+	 	</div>	
+	 </div>
+</body>
+</html>
+
+
+
+
+
+
