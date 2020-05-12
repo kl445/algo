@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script >
+	$(document).ready(function() {
+		//버튼이 눌리면 ajax 요청 전송
+		$('#get').click(function() {
+			$.ajax({ 	//{key: value, key:value}:json 자바 스크립트 객체
+				url:'http://localhost:8080/MVC/loginProcess.bod',
+				//url:'http://localhost:8080/MVC/test.bod',
+				data:{//서버로 보낼 데이터
+					id:$('#id').val(),
+					pw:$('#pw').val()
+				},
+
+				success: function(result) {
+					
+					var str=$.trim(result);
+					console.log(str);
+					
+					if(str==="ok"){
+					console.log("ok2") ;
+					$('h1').text("로그인!");
+					$('#login').hide();
+					
+					}
+					else{
+						console.log("else"); 
+					}
+
+					//성공시의 콜백 메소드
+					$('#result').val(result);
+				},
+				error: function() {
+					alert("에러");
+				}
+				
+			});
+		});
+	});
+	
+
+</script>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>jquery ajax test</h1>
+<div id="login">
+	id:<input type="text" id="id"><br>
+	pw:<input type="text" id="pw"><br>
+	<button id="get">get data</button>
+</div>
+<hr>
+<textarea rows="10" cols="80" id="result"></textarea>
+</body>
+</html>
