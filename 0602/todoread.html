@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  
+  <div id="app">
+    <h1 class="text-center">할일 상세보기</h1>
+      <div class="text-align">
+        <template v-for="todo in todolist" v-if="no==todo.no">
+          <table class="table table-condensed ">
+            <tr>
+              <th>번호</th>
+              <td>{{todo.no}}</td>
+
+            </tr>
+            <tr>
+              <th>할일</th>
+              <td>{{todo.todo}}</td>
+
+            </tr>
+            <tr>
+              <th>ID</th>
+              <td>{{todo.id}}</td>
+
+            </tr>
+            <tr>
+              <th>작성일</th>
+              <td>{{todo.wdate}}</td>
+
+            </tr>
+            <tr>
+              <th>마감일</th>
+              <td>{{todo.edate}}</td>
+
+            </tr>
+            <tr>
+              <th>수행여부</th>
+              <td>{{todo.done}}</td>
+
+            </tr>
+
+          </table>
+          <hr>
+          <a href="todolist.html" class="btn btn-primary">back</a>
+        </template>
+
+      </div>
+
+  </div>
+
+  <script>
+    // https://developer.mozilla.org/en-US/docs/Web/API/URL/URL
+    const params = (new URL(document.location)).searchParams;
+    const no = params.get('no');
+
+    console.dir(new URL(document.location));
+    console.dir(params.get('no'));
+
+
+
+
+
+    const todolist = [{
+                "no": 4,
+                "todo": "알고리즘/자바공부",
+                "id": "ssafy",
+                "wdate": "2020-05-27",
+                "edate": "2020-06-03",
+                "done":"N"
+            },
+            {
+                "no": 3,
+                "todo": "밤비 산책 시키기",
+                "id": "dada",
+                "wdate": "2020-05-27",
+                "edate": "2020-06-03",
+                "done":"N"
+            },
+            {
+                "no": 2,
+                "todo": "여행계획세우기",
+                "id": "dada",
+                "wdate": "2020-05-27",
+                "edate": "2020-06-03",
+                "done":"N"
+            }, 
+            {
+                "no": 1,
+                "todo": "영화보기",
+                "id": "dada",
+                "wdate": "2020-05-27",
+                "edate": "2020-06-03",
+                "done":"Y"
+            }
+
+        ];
+
+        var vm= new Vue({
+            el:'#app',
+            data: {
+                no:no,
+                todolist:todolist
+            }
+        });
+
+
+  </script>
+
+</body>
+
+</html>

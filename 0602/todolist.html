@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+        <h1 class ="text-center">오늘의 할일 게시판</h1>
+        <div >
+            <table class="table table-borderd table-condensed">
+                <colgroup>
+                    <col width="10%"/>
+                    <col width="40%"/>
+                    <col width="10%"/>
+                    <col width="20%"/>
+                    <col width="10%"/>
+                    <col width="10%"/>
+                </colgroup>
+                <tr>
+                    <th>번호</th>
+                    <th>할일</th>
+                    <th>ID</th>
+                    <th>작성일</th>
+                    <th>마감일</th>
+                    <th>수행여부</th>
+                
+                </tr>
+                <tr v-for="todo,index in todolist">
+                    <td>{{todo.no}}</td>
+                    <td><a v-bind:href="'todoread.html?no=' + todo.no">{{todo.todo}}</a></td>
+                    <!-- <td><a v-bind:href="'read.html?no=' + board.no">{{board.title}}</a></td> -->
+                    <td>{{todo.id}}</td>
+                    <td>{{todo.wdate}}</td>
+                    <td>{{todo.edate}}</td>
+                    <td>{{todo.done}}</td>
+                </tr>
+
+            </table>
+            
+        </div>
+
+    </div>
+    <script>
+        const todolist = [{
+                "no": 4,
+                "todo": "알고리즘/자바공부",
+                "id": "ssafy",
+                "wdate": "2020-05-27",
+                "edate": "2020-06-03",
+                "done":"N"
+            },
+            {
+                "no": 3,
+                "todo": "밤비 산책 시키기",
+                "id": "dada",
+                "wdate": "2020-05-27",
+                "edate": "2020-06-03",
+                "done":"N"
+            },
+            {
+                "no": 2,
+                "todo": "여행계획세우기",
+                "id": "dada",
+                "wdate": "2020-05-27",
+                "edate": "2020-06-03",
+                "done":"N"
+            }, 
+            {
+                "no": 1,
+                "todo": "영화보기",
+                "id": "dada",
+                "wdate": "2020-05-27",
+                "edate": "2020-06-03",
+                "done":"Y"
+            }
+
+        ];
+
+        var vm= new Vue({
+            el:'#app',
+            data: {
+                todolist:todolist
+            }
+        });
+
+    </script>
+</body>
+
+</html>
